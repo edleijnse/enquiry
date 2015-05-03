@@ -11,18 +11,30 @@ import java.util.Properties;
  *
  */
 public class Enquiry {
+    private static String enquiryHeaderLocation;
+    
+    public void setEnquiryHeader(String headerLocation){
+    	enquiryHeaderLocation = headerLocation;
+    }
+	
 	public static void main(String[] args) {
 		System.out.println("Hello World Ed!");
 		Properties properties = new Properties();
 		BufferedInputStream stream;
 		
 		try {
-			stream = new BufferedInputStream(new FileInputStream(
-				"C:/data/git/enquiry/enquery/src/main/java/leijnse/info/enquiry/myproject.properties"));
-			properties.load(stream);
+			Enquiry enquiry = new Enquiry();
 			
-			String sprache = properties.getProperty("test");
-			System.out.println("sprache: " + sprache);
+			stream = new BufferedInputStream(
+					new FileInputStream(
+							"C:/data/git/enquiry/enquiry/src/main/resources/enquiry.properties"));
+
+					properties.load(stream);
+			
+			enquiryHeaderLocation = properties.getProperty("header");
+			enquiry.setEnquiryHeader(enquiryHeaderLocation);
+			
+			System.out.println("headerLocation: " + enquiryHeaderLocation);
 
 			stream.close();
 		} catch (FileNotFoundException e) {
