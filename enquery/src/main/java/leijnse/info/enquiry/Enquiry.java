@@ -18,8 +18,11 @@ public class Enquiry {
 		
 		try {
 			stream = new BufferedInputStream(new FileInputStream(
-				"enquiry.properties"));
+				"C:/data/git/enquiry/enquery/src/main/java/leijnse/info/enquiry/myproject.properties"));
+			properties.load(stream);
 			
+			String sprache = properties.getProperty("test");
+			System.out.println("sprache: " + sprache);
 
 			stream.close();
 		} catch (FileNotFoundException e) {
@@ -30,6 +33,6 @@ public class Enquiry {
 			e.printStackTrace();
 		}
 
-		String sprache = properties.getProperty("lang");
+		
 	}
 }
