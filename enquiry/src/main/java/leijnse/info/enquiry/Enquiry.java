@@ -1,9 +1,11 @@
 package leijnse.info.enquiry;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -14,14 +16,12 @@ import java.util.ResourceBundle;
 public class Enquiry {
 	private static String enquiryHeaderLocation;
 
-	public void setEnquiryHeader(String headerLocation) {
-		enquiryHeaderLocation = headerLocation;
-	}
 
 	public String getEnquiryFragment(String iFragment) throws IOException {
 		String myHeader = "";
-		BufferedReader br = new BufferedReader(new FileReader(
-				iFragment));
+		InputStream in =  this.getClass().getClassLoader().getResourceAsStream(iFragment);
+		BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
+		
 		try {
 			StringBuilder sb = new StringBuilder();
 			myHeader = br.readLine();
@@ -49,17 +49,40 @@ public class Enquiry {
 
 			// https://docs.oracle.com/javase/tutorial/displayCode.html?code=https://docs.oracle.com/javase/tutorial/i18n/resbundle/examples/PropertiesDemo.java
 
-			ResourceBundle labels = ResourceBundle.getBundle("enquiry",
+			/*ResourceBundle labels = ResourceBundle.getBundle("enquiry",
 					Locale.GERMAN);
 			enquiryHeaderLocation = labels.getString("header");
-			// enquiryHeaderLocation = properties.getProperty("header");
-			enquiry.setEnquiryHeader(enquiryHeaderLocation);
-
-			System.out.println("headerLocation: " + enquiryHeaderLocation);
 			
-			String myHeader = enquiry.getEnquiryFragment(enquiryHeaderLocation);
+			System.out.println("headerLocation: " + enquiryHeaderLocation);*/
 			
+			
+			String myHeader = enquiry.getEnquiryFragment("enquiryheader_01_prolog.html");
+			myHeader += enquiry.getEnquiryFragment("enquiryheader_02_body.html");
+			myHeader += enquiry.getEnquiryFragment("enquiryheader_03_epilog.html");
 			System.out.println("header: " + myHeader);
+			
+			String myQuestion1 = enquiry.getEnquiryFragment("enquiryquestion_01_prolog.html");
+			myQuestion1 += enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
+			myQuestion1 += "Wieviele Zigaretten rauchen Sie?";
+			myQuestion1 += enquiry.getEnquiryFragment("enquiryanswer_01_prolog.html");
+			myQuestion1 += enquiry.getEnquiryFragment("enquiryanswer_02_body.html");
+			myQuestion1 += "Anzahl:";
+			myQuestion1 += enquiry.getEnquiryFragment("enquiryanswer_03_epilog.html");
+			myQuestion1 += enquiry.getEnquiryFragment("enquiryquestion_03_epilog.html");
+			System.out.println("question1: " + myQuestion1);
+			
+			String myQuestion2 = enquiry.getEnquiryFragment("enquiryquestion_01_prolog.html");
+			myQuestion2 += enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
+			myQuestion2 += "Wie schwer sind Sie?";
+			myQuestion2 += enquiry.getEnquiryFragment("enquiryanswer_01_prolog.html");
+			myQuestion2 += enquiry.getEnquiryFragment("enquiryanswer_02_body.html");
+			myQuestion2 += "Gewicht:";
+			myQuestion2 += enquiry.getEnquiryFragment("enquiryanswer_03_epilog.html");
+			myQuestion2 += enquiry.getEnquiryFragment("enquiryquestion_03_epilog.html");
+			System.out.println("question2: " + myQuestion2);
+			
+			String myEnquiry = myHeader + myQuestion1 + myQuestion2;
+			System.out.println("myEnquiry: " + myEnquiry);
 
 		} catch (Exception e) {
 
