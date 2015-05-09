@@ -42,8 +42,7 @@ public class Enquiry {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Hello World Ed!");
-
+		
 		try {
 			Enquiry enquiry = new Enquiry();
 
@@ -56,34 +55,30 @@ public class Enquiry {
 			System.out.println("headerLocation: " + enquiryHeaderLocation);*/
 			
 			
-			String myHeader = enquiry.getEnquiryFragment("enquiryheader_01_prolog.html");
-			myHeader += enquiry.getEnquiryFragment("enquiryheader_02_body.html");
-			myHeader += enquiry.getEnquiryFragment("enquiryheader_03_epilog.html");
-			System.out.println("header: " + myHeader);
+			String myEnquiry = enquiry.getEnquiryFragment("enquiry_01_prolog.html");
 			
-			String myQuestion1 = enquiry.getEnquiryFragment("enquiryquestion_01_prolog.html");
-			myQuestion1 += enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
-			myQuestion1 += "Wieviele Zigaretten rauchen Sie?";
-			myQuestion1 += enquiry.getEnquiryFragment("enquiryanswer_01_prolog.html");
-			myQuestion1 += enquiry.getEnquiryFragment("enquiryanswer_02_body.html");
-			myQuestion1 += "Anzahl:";
-			myQuestion1 += enquiry.getEnquiryFragment("enquiryanswer_03_epilog.html");
-			myQuestion1 += enquiry.getEnquiryFragment("enquiryquestion_03_epilog.html");
-			System.out.println("question1: " + myQuestion1);
 			
-			String myQuestion2 = enquiry.getEnquiryFragment("enquiryquestion_01_prolog.html");
-			myQuestion2 += enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
-			myQuestion2 += "Wie schwer sind Sie?";
-			myQuestion2 += enquiry.getEnquiryFragment("enquiryanswer_01_prolog.html");
-			myQuestion2 += enquiry.getEnquiryFragment("enquiryanswer_02_body.html");
-			myQuestion2 += "Gewicht:";
-			myQuestion2 += enquiry.getEnquiryFragment("enquiryanswer_03_epilog.html");
-			myQuestion2 += enquiry.getEnquiryFragment("enquiryquestion_03_epilog.html");
-			System.out.println("question2: " + myQuestion2);
+			myEnquiry += enquiry.getEnquiryFragment("enquiryquestion_01_prolog.html");
 			
-			String myEnquiry = myHeader + myQuestion1 + myQuestion2;
-			System.out.println("myEnquiry: " + myEnquiry);
-
+			String myQuestion1 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
+			myEnquiry += myQuestion1;
+			
+			
+			String myQuestion2 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
+			myEnquiry += myQuestion2;
+			
+			String myQuestion3 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
+			myEnquiry += myQuestion3;
+			for (int i=0;i<100;i++){
+				String myQuestion4 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
+				myEnquiry += myQuestion4;
+			}
+			
+			
+		
+			myEnquiry += enquiry.getEnquiryFragment("enquiry_03_epilog.html");
+			System.out.println(myEnquiry);
+			
 		} catch (Exception e) {
 
 			e.printStackTrace();
