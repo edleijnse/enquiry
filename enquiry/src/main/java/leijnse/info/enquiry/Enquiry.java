@@ -71,7 +71,9 @@ public class Enquiry {
 			myEnquiry += myQuestion3;
 			for (int i=0;i<100;i++){
 				String myQuestion4 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
-				myEnquiry += myQuestion4;
+				String myNewstring = myQuestion4.replaceAll("#questionId", Integer.toString(i + 4));
+				String myNewstring2 = myNewstring.replaceAll("#questionDescription", "Frage " + Integer.toString(i + 4));
+				myEnquiry += myNewstring2;
 			}
 			
 			
