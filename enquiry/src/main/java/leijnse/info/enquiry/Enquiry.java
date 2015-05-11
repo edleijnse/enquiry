@@ -15,6 +15,12 @@ import java.util.ResourceBundle;
  */
 public class Enquiry {
 	private static String enquiryHeaderLocation;
+        private static String labelQuestionary;
+        private static String labelQuestionId;
+        private static String labelQuestion;
+        private static String labelAnswerId;
+        private static String labelAnswer;
+        
 
 
 	public String getEnquiryFragment(String iFragment) throws IOException {
@@ -48,17 +54,31 @@ public class Enquiry {
 
 			// https://docs.oracle.com/javase/tutorial/displayCode.html?code=https://docs.oracle.com/javase/tutorial/i18n/resbundle/examples/PropertiesDemo.java
 
-			/*ResourceBundle labels = ResourceBundle.getBundle("enquiry",
+			ResourceBundle labels = ResourceBundle.getBundle("enquiry",
 					Locale.GERMAN);
 			enquiryHeaderLocation = labels.getString("header");
+			labelQuestionary = labels.getString("txtquestionary");
+                        labelQuestionId = labels.getString("txtquestionid");
+                        labelQuestion = labels.getString("txtquestion");
+                        labelAnswerId = labels.getString("txtanswerid");
+                        labelAnswer = labels.getString("txtanswer");
+                        
+			System.out.println("labelQuestionary: " + labelQuestionary);
+                        System.out.println("labelQuestionId: " + labelQuestionId);
+                        System.out.println("labelQuestion: " + labelQuestion);
+                        System.out.println("labelAnswerId: " + labelAnswerId);
+                        System.out.println("labelAnswer: " + labelAnswer);
 			
-			System.out.println("headerLocation: " + enquiryHeaderLocation);*/
 			
+			String myEnquiryPrepare = enquiry.getEnquiryFragment("enquiry_01_prolog.html");
+			String myEnquiry = myEnquiryPrepare.replace("#labelQuestionary", labelQuestionary);
 			
-			String myEnquiry = enquiry.getEnquiryFragment("enquiry_01_prolog.html");
-			
-			
-			myEnquiry += enquiry.getEnquiryFragment("enquiryquestion_01_prolog.html");
+                        String myEnquiryQuestion01Prolog01 = enquiry.getEnquiryFragment("enquiryquestion_01_prolog.html");
+                        String myEnquiryQuestion01Prolog02 = myEnquiryQuestion01Prolog01.replace("#labelQuestionId", labelQuestionId);
+                        String myEnquiryQuestion01Prolog03 = myEnquiryQuestion01Prolog02.replace("#labelQuestion", labelQuestion);
+                        String myEnquiryQuestion01Prolog04 = myEnquiryQuestion01Prolog03.replace("#labelAnswerId", labelAnswerId);
+                        String myEnquiryQuestion01Prolog05 = myEnquiryQuestion01Prolog04.replace("#labelAnswer", labelAnswer);
+			myEnquiry += myEnquiryQuestion01Prolog05;
 			
 			String myQuestion1 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
 			myEnquiry += myQuestion1;
