@@ -23,7 +23,8 @@ public class Enquiry {
     private static String labelAnswer;
 
     public String getEnquiryFragment(String iFragment) throws IOException {
-        String myHeader = "";
+        String myHeader;
+        myHeader = "";
         InputStream in = this.getClass().getClassLoader().getResourceAsStream(iFragment);
         BufferedReader br = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
 
@@ -38,8 +39,6 @@ public class Enquiry {
             }
             return sb.toString();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         } finally {
             br.close();
         }
