@@ -72,7 +72,11 @@ public class Enquiry {
         myEnquiry += myEnquiryQuestion01Prolog05;
 
         String myQuestion1 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
-        myEnquiry += myQuestion1;
+        String myNewstring1_1 = myQuestion1.replaceAll("#questionId", "1");
+        String myNewstring1_2 = myNewstring1_1.replaceAll("#questionDescription", "Wieviele Zigaretten rauchen Sie?");
+        String myNewstring1_3 = myNewstring1_2.replaceAll("#answerId", "Anzahl:");
+        
+        myEnquiry += myNewstring1_3;
 
         String myQuestion2 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
         myEnquiry += myQuestion2;
