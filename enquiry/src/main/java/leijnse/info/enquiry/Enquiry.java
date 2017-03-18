@@ -10,11 +10,11 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- * Hello world!
+ * Hello world! Test Github
  *
  */
 public class Enquiry {
-
+    private static String testString;
     private static String enquiryHeaderLocation;
     private static String labelQuestionary;
     private static String labelQuestionId;
@@ -49,18 +49,17 @@ public class Enquiry {
 
         Enquiry enquiry = new Enquiry();
 
-			// https://docs.oracle.com/javase/tutorial/displayCode.html?code=https://docs.oracle.com/javase/tutorial/i18n/resbundle/examples/PropertiesDemo.java
-        ResourceBundle labels = ResourceBundle.getBundle("enquiry",
-                Locale.GERMAN);
+        // https://docs.oracle.com/javase/tutorial/displayCode.html?code=https://docs.oracle.com/javase/tutorial/i18n/resbundle/examples/PropertiesDemo.java
+        ResourceBundle labels = ResourceBundle.getBundle("enquiry", Locale.GERMAN);
         enquiryHeaderLocation = labels.getString("header");
-        
+
         labelQuestionary = labels.getString("txtquestionary");
         labelQuestionId = labels.getString("txtquestionid");
         labelQuestion = labels.getString("txtquestion");
         labelAnswerId = labels.getString("txtanswerid");
         labelAnswer = labels.getString("txtanswer");
 
-    
+
         String myEnquiryPrepare = enquiry.getEnquiryFragment("enquiry_01_prolog.html");
         String myEnquiry = myEnquiryPrepare.replace("#labelQuestionary", labelQuestionary);
 
@@ -75,7 +74,7 @@ public class Enquiry {
         String myNewstring1_1 = myQuestion1.replaceAll("#questionId", "1");
         String myNewstring1_2 = myNewstring1_1.replaceAll("#questionDescription", "Wieviele Zigaretten rauchen Sie?");
         String myNewstring1_3 = myNewstring1_2.replaceAll("#answerId", "Anzahl:");
-        
+
         myEnquiry += myNewstring1_3;
 
         String myQuestion2 = enquiry.getEnquiryFragment("enquiryquestion_02_body.html");
@@ -92,14 +91,14 @@ public class Enquiry {
 
         myEnquiry += enquiry.getEnquiryFragment("enquiry_03_epilog.html");
 
-        
+
         return myEnquiry;
     }
 
     public static void main(String[] args) {
 
         try {
-        	System.out.println("start");
+            System.out.println("start");
             Enquiry enquiry = new Enquiry();
             System.out.println(enquiry.createEnquiry());
 
