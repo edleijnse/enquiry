@@ -92,12 +92,14 @@ public class Enquiry {
 
         myEnquiry += enquiry.getEnquiryFragment("enquiry_03_epilog.html");
 
+        
         return myEnquiry;
     }
 
     public static void main(String[] args) {
 
         try {
+        	System.out.println("start");
             Enquiry enquiry = new Enquiry();
             System.out.println(enquiry.createEnquiry());
 
