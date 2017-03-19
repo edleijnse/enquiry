@@ -1,5 +1,7 @@
 package leijnse.info.enquery;
 
+import java.io.IOException;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -32,7 +34,13 @@ public class EnquiryTest extends TestCase {
      */
     public void testApp() {
         assertTrue(true);
-        // Enquiry testee = new Enquiry();
+        Enquiry testee = new Enquiry();
+        try {
+			System.out.println(testee.createEnquiry());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         System.out.println("test");
 
     }
