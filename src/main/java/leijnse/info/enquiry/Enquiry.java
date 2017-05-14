@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 
 /**
  * Hello world! Test Github
- *
  */
 public class Enquiry {
     private static String testString;
