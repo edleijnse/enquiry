@@ -32,6 +32,7 @@ public class EnquiryTest extends TestCase {
     /**
      * Rigourous Test :-)
      */
+
     public void testApp() {
         assertTrue(true);
         Enquiry testee = new Enquiry();

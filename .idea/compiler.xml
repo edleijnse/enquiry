@@ -9,8 +9,8 @@
         <module name="enquery" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="enquery" target="1.5" />
+    <bytecodeTargetLevel target="1.6">
+      <module name="enquery" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
